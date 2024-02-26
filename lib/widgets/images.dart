@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ImageWiget extends StatelessWidget {
@@ -46,11 +47,14 @@ class ImageWiget extends StatelessWidget {
               },
             ),
           ),
-          //   CachedNetworkImage(
-          //     imageUrl: "http://via.placeholder.com/350x150",
-          //     placeholder: (context, url) {return const Image(image: AssetImage('assets/images/placeholder.webp'))},
-          //     errorWidget: (context, url, error) => const Icon(Icons.error),
-          // ),
+          CachedNetworkImage(
+            imageUrl: "http://via.placeholder.com/350x150",
+            placeholder: (context, url) {
+              return const Image(
+                  image: AssetImage('assets/images/placeholder.webp'));
+            },
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
           Image.network(
             'https://t3.ftcdn.net/jpg/03/37/35/92/360_F_337359205_iX7qbbRU4VSYhAbu3aXFX45eTberOQ1x.webp',
             loadingBuilder: (context, child, loadingProgress) {
