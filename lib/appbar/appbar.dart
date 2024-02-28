@@ -79,7 +79,7 @@ class _AppBarItemState extends State<AppBarItem> {
           'App Bar',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue.shade400,
+        backgroundColor: Colors.teal.shade400,
         leading: const Padding(
           padding: EdgeInsets.all(8.0),
           child: Image(
@@ -184,32 +184,30 @@ class _AppBarItemState extends State<AppBarItem> {
                         children: [
                           TextButton.icon(
                             onPressed: () {},
-                            icon: const Icon(Icons.email, color: Colors.white,),
+                            icon: const Icon(
+                              Icons.email,
+                              color: Colors.white,
+                            ),
                             label: const Text(
                               'Partager avec email',
-                              style: TextStyle(
-                                color:  Colors.white
-                              ),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                           TextButton.icon(
-                            onPressed: (){},
-                            icon: const Icon(Icons.bluetooth, color: Colors.white),
+                            onPressed: () {},
+                            icon: const Icon(Icons.bluetooth,
+                                color: Colors.white),
                             label: const Text(
                               'Partager avec bluetooth',
-                              style: TextStyle(
-                                color: Colors.white
-                              ),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                           TextButton.icon(
-                            onPressed: (){},
+                            onPressed: () {},
                             icon: const Icon(Icons.wifi, color: Colors.white),
                             label: const Text(
                               'Partage a proximite',
-                              style: TextStyle(
-                                color: Colors.white
-                              ),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ],
