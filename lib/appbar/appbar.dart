@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:johan/drawer/drawer.dart';
+import 'package:johan/widgets/buttons/elevated_button.dart';
+import 'package:johan/widgets/buttons/fab.dart';
+import 'package:johan/widgets/buttons/text_button.dart';
 
 class AppBarItem extends StatefulWidget {
   const AppBarItem({super.key});
@@ -9,53 +11,70 @@ class AppBarItem extends StatefulWidget {
 }
 
 class _AppBarItemState extends State<AppBarItem> {
+  String text = 'Nothing';
+  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
+
+  Icon notificationIcon = const Icon(Icons.notifications_none_sharp);
+  bool notificationIsActive = false;
+
+  void notifyMe() {
+    setState(() {
+      if (notificationIsActive) {
+        notificationIcon = const Icon(Icons.notifications_none);
+        notificationIsActive = false;
+      } else {
+        notificationIcon = const Icon(Icons.notifications_on_outlined);
+        notificationIsActive = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    String text = 'Nothing';
-    GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
-
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        key: _drawerKey,
-        drawer: const DrawerNavigation(),
-        appBar: AppBar(
-          title: const Text(
-            'App Bar',
-            style: TextStyle(color: Colors.white),
+    return Scaffold(
+      key: _drawerKey,
+      appBar: AppBar(
+        title: const Text(
+          'App Bar',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blue.shade400,
+        leading: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Image(
+            image: AssetImage('assets/images/logo.png'),
           ),
-          backgroundColor: Colors.blue.shade400,
-          leading: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Image(
-              image: AssetImage('assets/images/logo.png'),
-            ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: notifyMe,
+            icon: notificationIcon,
           ),
-          actions: [
-            IconButton(
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+          Builder(builder: (context) {
+            return IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.notifications_none_sharp),
-            ),
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.search),
-            ),
-            Builder(
-              builder: (context) {
-                return IconButton(
-                  onPressed: () => Scaffold.of(context).openDrawer(),
-                  icon: const CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/profile.jpg'),
-                  ),
-                );
-              }
-            ),
-          ],
-        ),
-        drawerEnableOpenDragGesture: false,
-        body: Center(
-          child: Text(text),
-        ),
+              icon: const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/profile.jpg'),
+              ),
+            );
+          }),
+        ],
+      ),
+      floatingActionButton: const FAB(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(text),
+          ),
+          elevatedBtn(),
+          txtButton(),
+        ],
       ),
     );
   }
