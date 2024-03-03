@@ -23,7 +23,7 @@ class DrawerItemsTile extends StatelessWidget {
         selectedTileColor: DrawerItems.drawerSelectedTileColor,
         leading: Icon(
           DrawerItems.drawerItemIcon[index],
-          size: 30,
+          size: 25,
           color: indexClick == index
               ? DrawerItems.drawerItemSelectedColor
               : DrawerItems.drawerItemColor,
@@ -31,8 +31,8 @@ class DrawerItemsTile extends StatelessWidget {
         title: Text(
           DrawerItems.drawerItemText[index],
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
             color: indexClick == index
                 ? DrawerItems.drawerItemSelectedColor
                 : DrawerItems.drawerItemColor,

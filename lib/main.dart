@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:johan/form/form.dart';
+import 'package:johan/navigation/routes/routes.dart';
 
 void main() => runApp(const App());
 
@@ -8,9 +8,14 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.amber,
+        fontFamily: 'Times New Roman',
+      ),
       debugShowCheckedModeBanner: false,
-      home: FormValidation(),
+      initialRoute: RouteManager.homePage,
+      onGenerateRoute: RouteManager.generateRoute,
     );
   }
 }

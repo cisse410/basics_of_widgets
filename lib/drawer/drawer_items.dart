@@ -12,6 +12,7 @@ class DrawerItems {
     'Messages',
     'Corbeille',
     'Paramètres',
+    'Partager l\'application'
   ];
 
   static final drawerItemIcon = [
@@ -21,5 +22,6 @@ class DrawerItems {
     Icons.message,
     Icons.delete,
     Icons.settings,
+    Icons.share,
   ];
 }

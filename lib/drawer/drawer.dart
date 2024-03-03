@@ -135,23 +135,23 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
                     child: Text(
                       '#L2F',
                       style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 20,
-                        color: DrawerItems.drawerItemSelectedColor
-                      ),
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 20,
+                          color: DrawerItems.drawerItemSelectedColor),
                     ),
                   ),
-                  const SizedBox(height: 5,),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   Center(
                     child: Text(
                       '#CISSE410',
                       style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 20,
-                        color: DrawerItems.drawerItemColor
-                      ),
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 20,
+                          color: DrawerItems.drawerItemColor),
                     ),
                   ),
                   const DrawerDivider(),
