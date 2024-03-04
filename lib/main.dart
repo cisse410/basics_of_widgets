@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:johan/navigation/routes/routes.dart';
+import 'package:johan/navigation/routes/auth_routes.dart';
 
 void main() => runApp(const App());
 
@@ -14,8 +14,8 @@ class App extends StatelessWidget {
         fontFamily: 'Times New Roman',
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteManager.homePage,
-      onGenerateRoute: RouteManager.generateRoute,
+      initialRoute: AuthRouteManager.main,
+      onGenerateRoute: AuthRouteManager.generateRoute,
     );
   }
 }
