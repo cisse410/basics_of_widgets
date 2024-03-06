@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:johan/auth/password_field.dart';
 import 'package:johan/auth/textfield.dart';
 import 'package:johan/navigation/routes/auth_routes.dart';
+import 'package:johan/widgets/default_app_bar.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -29,17 +30,9 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Connexion',
-        ),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        automaticallyImplyLeading: true,
+      appBar: DefaultAppBar(
+        title: "Connexion".toUpperCase(),
+        backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -51,9 +44,9 @@ class _LoginState extends State<Login> {
                 Column(
                   children: [
                     const Image(
-                      image: AssetImage('assets/images/uidt.jpeg'),
-                      height: 175,
-                      width: 150,
+                      image: AssetImage('assets/images/login.png'),
+                      height: 300,
+                      width: 300,
                     ),
                     const Text(
                       'Formulaire de connexion',
@@ -76,33 +69,33 @@ class _LoginState extends State<Login> {
                       height: 10,
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        _submit();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white
-                      ),
-                      child: const Text('Login')
-                    ),
+                        onPressed: () {
+                          _submit();
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                        child: const Text('Login')),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
                           "Already have an account? ",
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(AuthRouteManager.register);
-                          },
-                          style: const ButtonStyle(
-                            foregroundColor: MaterialStatePropertyAll(Colors.blue)
-                          ),
-                          child: const Text(
-                            "S'inscrire",
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
+                        InkWell(
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(AuthRouteManager.register);
+                            },
+                            style: const ButtonStyle(
+                                foregroundColor:
+                                    MaterialStatePropertyAll(Colors.blue)),
+                            child: const Text(
+                              "S'inscrire",
+                              style: TextStyle(
+                                decoration: TextDecoration.underline,
+                              ),
                             ),
                           ),
                         ),

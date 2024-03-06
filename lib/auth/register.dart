@@ -1,11 +1,13 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:johan/auth/email_field.dart';
 import 'package:johan/auth/password_field.dart';
-import 'package:johan/auth/phone_Field.dart';
 import 'package:johan/auth/textfield.dart';
 import 'package:johan/navigation/routes/auth_routes.dart';
+
+import '../widgets/default_app_bar.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -33,17 +35,9 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Inscription',
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        automaticallyImplyLeading: true,
+      appBar: DefaultAppBar(
+        title: "Inscription".toUpperCase(),
+        backgroundColor: Colors.purple,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -55,9 +49,9 @@ class _RegisterState extends State<Register> {
                 Column(
                   children: [
                     const Image(
-                      image: AssetImage('assets/images/uidt.jpeg'),
-                      height: 175,
-                      width: 150,
+                      image: AssetImage('assets/images/login.png'),
+                      height: 230,
+                      width: 230,
                     ),
                     const Text(
                       "Formulaire d'inscription",
@@ -79,11 +73,32 @@ class _RegisterState extends State<Register> {
                     const SizedBox(
                       height: 5,
                     ),
-                    PhoneFormField(
-                      controller: phoneController,
-                      hintText: 'Téléphone',
-                      keyboardType: TextInputType.phone,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IntlPhoneField(
+                        searchText: 'Rechercher un pays',
+                        decoration: InputDecoration(
+                          hintText: 'Téléphone',
+                          filled: true,
+                          fillColor: Colors.blue[100],
+                          isDense: true,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        invalidNumberMessage: "Saisir un numéro correct",
+                        initialCountryCode: 'SN',
+                        onChanged: (phone) {
+                          print(phone.completeNumber);
+                        },
+                      ),
                     ),
+                    // PhoneFormField(
+                    //   controller: phoneController,
+                    //   hintText: 'Téléphone',
+                    //   keyboardType: TextInputType.phone,
+                    // ),
                     const SizedBox(
                       height: 5,
                     ),
@@ -111,18 +126,19 @@ class _RegisterState extends State<Register> {
                         const Text(
                           'Don\'t have an account?',
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(AuthRouteManager.login);
-                          },
-                          style: const ButtonStyle(
-                            foregroundColor: MaterialStatePropertyAll(Colors.blue)
-                          ),
-                          child: const Text(
-                            'Se connecter',
-                            style: TextStyle(
-                              decoration: TextDecoration.underline
+                        InkWell(
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(AuthRouteManager.login);
+                            },
+                            style: const ButtonStyle(
+                                foregroundColor:
+                                    MaterialStatePropertyAll(Colors.blue)),
+                            child: const Text(
+                              'Se connecter',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline),
                             ),
                           ),
                         ),
