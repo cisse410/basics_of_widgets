@@ -18,6 +18,27 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  DateTime selectedDate = DateTime.now();
+
+    String content = "Date";
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101),
+        helpText: 'Votre date de naissance'
+      );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        content = "${selectedDate.toLocal()}".split(' ')[0];
+      });
+    }
+  }
+
+  
+
   final registerKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -60,7 +81,7 @@ class _RegisterState extends State<Register> {
                     FormTextFiled(
                       controller: nameController,
                       hintText: 'Nom complet',
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.datetime,
                     ),
                     const SizedBox(
                       height: 5,
@@ -120,6 +141,13 @@ class _RegisterState extends State<Register> {
                       ),
                       child: const Text('Register'),
                     ),
+                    ElevatedButton.icon(
+                        onPressed: () => _selectDate(context),
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.blue
+                        ),
+                        icon: const Icon(Icons.calendar_month),
+                        label: Text(content)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
